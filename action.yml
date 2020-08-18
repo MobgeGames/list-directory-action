@@ -1,0 +1,51 @@
+name: "iOS Build Action"
+description: "Build iOS project (.xcodeproj, .xcworkspace), and export ipa"
+inputs:
+  project-path:
+    description: "Project path"
+    required: true
+  p12-key-base64:
+    description: "Base64 encoded p12 key"
+    required: false
+  p12-cer-base64:
+    description: "Base64 encoded certificate for the p12 key"
+    required: false
+  p12-base64:
+    description: "Base64 encoded p12 file (key + cert)"
+    required: false
+  mobileprovision-base64:
+    description: "Base64 encoded mobileprovision file"
+    required: true
+  code-signing-identity:
+    description: "For example, iOS Distribution"
+    required: true
+  team-id:
+    description: "Team id"
+    required: true
+  workspace-path:
+    description: "Workspace path"
+    required: false
+    default: ""
+  export-method:
+    description: "Choose app-store, ad-hoc, package, enterprise, development, or developer-id"
+    required: false
+    default: "app-store"
+  configuration:
+    description: "For example, Debug, Release"
+    required: false
+    default: "Release"
+  certificate-password:
+    description: "Certificate password"
+    required: false
+    default: ""
+  output-path:
+    description: "Output path of ipa"
+    required: false
+    default: "output.ipa"
+  scheme:
+    description: "Scheme"
+    required: false
+    default: ""
+runs:
+  using: "node12"
+  main: "index.js"
